@@ -16,7 +16,7 @@ services:
               target: /etc/caddy
     pds:
         container_name: pds
-        image: ghcr.io/hsrmk/pds:sha-8ad4dbece37215d326a2aeca2388006325541bcb
+        image: ghcr.io/hsrmk/pds:sha-59928ce1dd234fb5823d535c9b350f24b21f3fa5
         network_mode: host
         restart: unless-stopped
         volumes:
