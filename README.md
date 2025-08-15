@@ -10,23 +10,23 @@ Head over to the [AT Protocol PDS Admins Discord](https://discord.gg/e7hpHxRfBP)
 
 <!-- toc -->
 
-- [FAQ](#faq)
-  * [What is Bluesky?](#what-is-bluesky)
-  * [What is AT Protocol?](#what-is-at-protocol)
-  * [Where is the code?](#where-is-the-code)
-  * [What is the current status of federation?](#what-is-the-current-status-of-federation)
-- [Self-hosting PDS](#self-hosting-pds)
-  * [Preparation for self-hosting PDS](#preparation-for-self-hosting-pds)
-  * [Open your cloud firewall for HTTP and HTTPS](#open-your-cloud-firewall-for-http-and-https)
-  * [Configure DNS for your domain](#configure-dns-for-your-domain)
-  * [Check that DNS is working as expected](#check-that-dns-is-working-as-expected)
-  * [Installer on Ubuntu 20.04/22.04 and Debian 11/12](#installer-on-ubuntu-20042204-and-debian-1112)
-  * [Verifying that your PDS is online and accessible](#verifying-that-your-pds-is-online-and-accessible)
-  * [Creating an account using pdsadmin](#creating-an-account-using-pdsadmin)
-  * [Creating an account using an invite code](#creating-an-account-using-an-invite-code)
-  * [Using the Bluesky app with your PDS](#using-the-bluesky-app-with-your-pds)
-  * [Setting up SMTP](#setting-up-smtp)
-  * [Updating your PDS](#updating-your-pds)
+-   [FAQ](#faq)
+    -   [What is Bluesky?](#what-is-bluesky)
+    -   [What is AT Protocol?](#what-is-at-protocol)
+    -   [Where is the code?](#where-is-the-code)
+    -   [What is the current status of federation?](#what-is-the-current-status-of-federation)
+-   [Self-hosting PDS](#self-hosting-pds)
+    -   [Preparation for self-hosting PDS](#preparation-for-self-hosting-pds)
+    -   [Open your cloud firewall for HTTP and HTTPS](#open-your-cloud-firewall-for-http-and-https)
+    -   [Configure DNS for your domain](#configure-dns-for-your-domain)
+    -   [Check that DNS is working as expected](#check-that-dns-is-working-as-expected)
+    -   [Installer on Ubuntu 20.04/22.04 and Debian 11/12](#installer-on-ubuntu-20042204-and-debian-1112)
+    -   [Verifying that your PDS is online and accessible](#verifying-that-your-pds-is-online-and-accessible)
+    -   [Creating an account using pdsadmin](#creating-an-account-using-pdsadmin)
+    -   [Creating an account using an invite code](#creating-an-account-using-an-invite-code)
+    -   [Using the Bluesky app with your PDS](#using-the-bluesky-app-with-your-pds)
+    -   [Setting up SMTP](#setting-up-smtp)
+    -   [Updating your PDS](#updating-your-pds)
 
 <!-- tocstop -->
 
@@ -46,8 +46,8 @@ Please visit the [AT Protocol docs](https://atproto.com/guides/overview) for add
 
 ### Where is the code?
 
-* [TypeScript code](https://github.com/bluesky-social/atproto/tree/main/packages/pds)
-* [Go code](https://github.com/bluesky-social/indigo)
+-   [TypeScript code](https://github.com/bluesky-social/atproto/tree/main/packages/pds)
+-   [Go code](https://github.com/bluesky-social/indigo)
 
 ### What is the current status of federation?
 
@@ -76,19 +76,20 @@ Launch a server on any cloud provider, [Digital Ocean](https://digitalocean.com/
 Ensure that you can ssh to your server and have root access.
 
 **Server Requirements**
-* Public IPv4 address
-* Public DNS name
-* Public inbound internet access permitted on port 80/tcp and 443/tcp
+
+-   Public IPv4 address
+-   Public DNS name
+-   Public inbound internet access permitted on port 80/tcp and 443/tcp
 
 **Server Recommendations**
-|                  |              |
+| | |
 | ---------------- | ------------ |
 | Operating System | Ubuntu 22.04 |
-| Memory (RAM)     | 1 GB         |
-| CPU Cores        | 1            |
-| Storage          | 20 GB SSD    |
-| Architectures    | amd64, arm64 |
-| Number of users  | 1-20         |
+| Memory (RAM) | 1 GB |
+| CPU Cores | 1 |
+| Storage | 20 GB SSD |
+| Architectures | amd64, arm64 |
+| Number of users | 1-20 |
 
 **Note:** It is a good security practice to restrict inbound ssh access (port 22/tcp) to your own computer's public IP address. You can check your current public IP address using [ifconfig.me](https://ifconfig.me/).
 
@@ -98,8 +99,8 @@ One of the most common sources of misconfiguration is not opening firewall ports
 
 In your cloud provider's console, the following ports should be open to inbound access from the public internet.
 
-* 80/tcp (Used only for TLS certification verification)
-* 443/tcp (Used for all application requests)
+-   80/tcp (Used only for TLS certification verification)
+-   443/tcp (Used for all application requests)
 
 **Note:** there is no need to set up TLS or redirect requests from port 80 to 443 because the Caddy web server, included in the Docker compose file, will handle this for you.
 
@@ -113,20 +114,22 @@ From your DNS provider's control panel, set up a domain with records pointing to
 | `*.example.com` | `A`  | `12.34.56.78` | 600 |
 
 **Note:**
-* Replace `example.com` with your domain name.
-* Replace `12.34.56.78` with your server's IP address.
-* Some providers may use the `@` symbol to represent the root of your domain.
-* The wildcard record is required when allowing users to create new accounts on your PDS.
-* The TTL can be anything but 600 (10 minutes) is reasonable
+
+-   Replace `example.com` with your domain name.
+-   Replace `12.34.56.78` with your server's IP address.
+-   Some providers may use the `@` symbol to represent the root of your domain.
+-   The wildcard record is required when allowing users to create new accounts on your PDS.
+-   The TTL can be anything but 600 (10 minutes) is reasonable
 
 ### Check that DNS is working as expected
 
 Use a service like [DNS Checker](https://dnschecker.org/) to verify that you can resolve domain names.
 
 Examples to check (record type `A`):
-* `example.com`
-* `random.example.com`
-* `test123.example.com`
+
+-   `example.com`
+-   `random.example.com`
+-   `test123.example.com`
 
 These should all return your server's public IP.
 
@@ -135,13 +138,13 @@ These should all return your server's public IP.
 On your server via ssh, download the installer script using wget:
 
 ```bash
-wget https://raw.githubusercontent.com/bluesky-social/pds/main/installer.sh
+wget https://raw.githubusercontent.com/hsrmk/pds/main/installer.sh
 ```
 
 or download it using curl:
 
 ```bash
-curl https://raw.githubusercontent.com/bluesky-social/pds/main/installer.sh >installer.sh
+curl https://raw.githubusercontent.com/hsrmk/pds/main/installer.sh >installer.sh
 ```
 
 And then run the installer using bash:
@@ -194,9 +197,9 @@ When creating an account using the app, enter this invite code.
 You can use the Bluesky app to connect to your PDS.
 
 1. Get the Bluesky app
-    * [Bluesky for Web](https://bsky.app/)
-    * [Bluesky for iPhone](https://apps.apple.com/us/app/bluesky-social/id6444370199)
-    * [Bluesky for Android](https://play.google.com/store/apps/details?id=xyz.blueskyweb.app)
+    - [Bluesky for Web](https://bsky.app/)
+    - [Bluesky for iPhone](https://apps.apple.com/us/app/bluesky-social/id6444370199)
+    - [Bluesky for Android](https://play.google.com/store/apps/details?id=xyz.blueskyweb.app)
 1. Enter the URL of your PDS (e.g. `https://example.com/`)
 
 _Note: because the subdomain TLS certificate is created on-demand, it may take 10-30s for your handle to be accessible. If you aren't seeing your first post/profile, wait 30s and try to make another post._
@@ -232,7 +235,7 @@ _Note: Your PDS will need to be restarted with those variables. This varies depe
 
 If you find that your test messages using cURL or other sources go out correctly, but you are not receiving emails from your PDS, you may need to URL encode your username and password on `/pds/pds.env` and restart the PDS service.
 
-If the username and/or password contain special characters, the special characters will need to be [percent encoded](https://en.wikipedia.org/wiki/Percent-encoding).  For some email services, the username will contain an extra `@` symbol that will also need to be percent encoded. For example, the URL `user&name@oci:p@ssword@smtphost:465` after percent encoding for the username and password fields would become `user%26name%40oci:p%40ssword@smtphost:465`.
+If the username and/or password contain special characters, the special characters will need to be [percent encoded](https://en.wikipedia.org/wiki/Percent-encoding). For some email services, the username will contain an extra `@` symbol that will also need to be percent encoded. For example, the URL `user&name@oci:p@ssword@smtphost:465` after percent encoding for the username and password fields would become `user%26name%40oci:p%40ssword@smtphost:465`.
 
 If you are migrating an account, Bluesky's UI will ask you to confirm your email address. The confirmation code email is meant to come from your PDS. If you are encountering issues with SMTP and want to confirm the address before solving it, you can find the confirmation code on the `email_token` table on `accounts.sqlite`.
 
@@ -270,7 +273,7 @@ sudo pdsadmin update
 
 This project is dual-licensed under MIT and Apache 2.0 terms:
 
-- MIT license ([LICENSE-MIT.txt](https://github.com/bluesky-social/pds/blob/main/LICENSE-MIT.txt) or http://opensource.org/licenses/MIT)
-- Apache License, Version 2.0, ([LICENSE-APACHE.txt](https://github.com/bluesky-social/pds/blob/main/LICENSE-APACHE.txt) or http://www.apache.org/licenses/LICENSE-2.0)
+-   MIT license ([LICENSE-MIT.txt](https://github.com/hsrmk/pds/blob/main/LICENSE-MIT.txt) or http://opensource.org/licenses/MIT)
+-   Apache License, Version 2.0, ([LICENSE-APACHE.txt](https://github.com/hsrmk/pds/blob/main/LICENSE-APACHE.txt) or http://www.apache.org/licenses/LICENSE-2.0)
 
 Downstream projects and end users may choose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.
