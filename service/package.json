@@ -7,6 +7,6 @@
 	"main": "index.js",
 	"license": "MIT",
 	"dependencies": {
-		"@hsrmk/pds": "^0.0.1"
+		"@hsrmk/pds": "^0.0.2"
 	}
 }

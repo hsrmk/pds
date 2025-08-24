@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@hsrmk/pds':
-    specifier: ^0.0.1
-    version: 0.0.1
+    specifier: ^0.0.2
+    version: 0.0.2
 
 packages:
 
@@ -1082,8 +1082,8 @@ packages:
     resolution: {integrity: sha512-HV5undWkKzcB4RZUusqOpcgxOaq6VOAH7zhhIr2g3G8NF/MlFO75SjOr2NfuSx0Mh40+1FqCkagKLJRykUWoFQ==}
     dev: false
 
-  /@hsrmk/pds@0.0.1:
-    resolution: {integrity: sha512-+g+x5FlkciVSYFN8DdtLQwV1FFUS0WP7qPTWyvLnMZNM3tMDHjmoDlwqC1RvnJ986E9awhhG1rdX4x4WjUy8og==}
+  /@hsrmk/pds@0.0.2:
+    resolution: {integrity: sha512-hdW28StY2T755fYXgpUDSx6SVTNvT9K+Bz00d9UYF4UqHW7sZgm75ZAuiGUoEQvq52UOQWpt86HU3i6oTjYThg==}
     engines: {node: '>=18.7.0'}
     dependencies:
       '@atproto-labs/fetch-node': 0.1.9
