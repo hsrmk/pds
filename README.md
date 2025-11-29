@@ -1,5 +1,11 @@
 # PDS
 
+
+> [!WARNING]
+> This is a repurposed PDS implementation for Skystack.
+> 1. Username length limit updated from 30 characters to 256 characters.
+> 2. Blob storage replaced with direct streaming from URL, instead of storing blobs on PDS.
+
 Welcome to the repository for the official Bluesky PDS (Personal Data Server). This repository includes container images and documentation designed to assist technical people with hosting a Bluesky PDS.
 
 Head over to the [AT Protocol PDS Admins Discord](https://discord.gg/e7hpHxRfBP) to chat with other folks hosting instances and get important updates about the PDS distribution!
